@@ -1,0 +1,328 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  
+  body {
+    font-family: 'Special Elite', monospace;
+    background: #F0EAD6;
+  }
+}
+
+@layer components {
+  .handwritten {
+    font-family: 'Kalam', cursive;
+    font-weight: 400;
+  }
+
+  .typewriter {
+    font-family: 'Special Elite', monospace;
+    line-height: 1.6;
+  }
+
+  .polaroid-frame {
+    background: white;
+    padding: 16px 16px 60px 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), 0 4px 16px rgba(0, 0, 0, 0.05);
+    width: 280px;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .polaroid-photo {
+    width: 248px;
+    height: 248px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .polaroid-caption {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    text-align: center;
+  }
+
+  .polaroid-project {
+    background: white;
+    padding: 12px 12px 48px 12px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    margin: 0 auto;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .polaroid-project .polaroid-photo {
+    width: 176px;
+    height: 176px;
+  }
+
+  .polaroid-project .polaroid-caption {
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+  }
+
+  .project-card {
+    border-radius: 12px;
+    border: 2px solid #A1887F;
+    border-style: dashed;
+    position: relative;
+  }
+
+  .project-card:hover {
+    transform: rotate(0deg) scale(1.02) !important;
+  }
+
+  .project-card .polaroid-project {
+    background: white;
+    padding: 8px 8px 32px 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    position: relative;
+    transform: rotate(-1deg);
+  }
+
+  .project-card .polaroid-project img {
+    width: 184px;
+    height: 140px;
+  }
+
+  .sepia {
+    filter: sepia(0.3) contrast(1.1) brightness(1.1);
+  }
+
+  .film-grain {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 20% 80%, rgba(120,119,108,0.3) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(255,255,255,0.15) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(120,119,108,0.15) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .dog-eared-photo {
+    position: relative;
+    background: white;
+    padding: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+  }
+
+  .sketched-border {
+    border: 3px solid #A1887F;
+    border-radius: 15px;
+    position: relative;
+  }
+
+  .sketched-border::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    border: 2px solid #A1887F;
+    border-radius: 18px;
+    opacity: 0.3;
+  }
+
+  .paper-scrap {
+    background: #F0EAD6;
+    padding: 24px;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    position: relative;
+    border: 1px solid #A1887F;
+    border-style: dashed;
+  }
+
+  .notepad-page {
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    position: relative;
+    border-left: 4px solid #ff6b6b;
+    background-image: repeating-linear-gradient(
+      transparent,
+      transparent 24px,
+      #A1887F 24px,
+      #A1887F 25px
+    );
+  }
+
+  .bg-vintage-cream {
+    background-color: #F0EAD6;
+  }
+
+  .bg-vintage-brown {
+    background-color: #A1887F;
+  }
+
+  .bg-vintage-blue {
+    background-color: #4682B4;
+  }
+
+  .text-vintage-cream {
+    color: #F0EAD6;
+  }
+
+  .text-vintage-brown {
+    color: #A1887F;
+  }
+
+  .text-vintage-blue {
+    color: #4682B4;
+  }
+
+  .bg-worn-paper {
+    background: linear-gradient(135deg, #F0EAD6 0%, #E8DCC0 100%);
+    position: relative;
+  }
+
+  .bg-worn-paper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 25% 25%, rgba(161, 136, 127, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(70, 130, 180, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .bg-paper-texture {
+    background-image: 
+      radial-gradient(circle at 1px 1px, rgba(161, 136, 127, 0.1) 1px, transparent 0);
+    background-size: 20px 20px;
+  }
+
+  .shadow-vintage {
+    box-shadow: 0 8px 32px rgba(161, 136, 127, 0.2), 0 4px 16px rgba(0, 0, 0, 0.1);
+  }
+}
+
+@layer utilities {
+  .animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .delay-1000 {
+    animation-delay: 1000ms;
+  }
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F0EAD6;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #A1887F;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #8D7B6B;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .polaroid-frame {
+    width: 240px;
+  }
+
+  .polaroid-photo {
+    width: 208px;
+    height: 208px;
+  }
+
+  .polaroid-project {
+    width: 180px;
+  }
+
+  .polaroid-project .polaroid-photo {
+    width: 156px;
+    height: 156px;
+  }
+}
+.chat-container {
+  font-family: 'Courier New', monospace;
+  background-color: #f4f1e1;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 600px;
+  margin: 0 auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.message {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.message.user {
+  background-color: #e0f7fa;
+  text-align: right;
+}
+
+.message.bot {
+  background-color: #fff9c4;
+  text-align: left;
+}
+
+.typing-indicator {
+  text-align: center;
+  font-style: italic;
+  color: #888;
+}
+
+.input-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.input-container input {
+  width: 80%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.input-container button {
+  width: 15%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
+}
+
+.input-container button:hover {
+  background-color: #45a049;
+}
+
+
