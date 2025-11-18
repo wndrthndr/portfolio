@@ -334,4 +334,37 @@ html {
   background-color: #45a049;
 }
 
+@keyframes scrollRollOpen {
+  0% {
+    transform: scaleY(0.05) rotate(-4deg);
+    opacity: 0;
+    transform-origin: top center;
+    filter: blur(6px);
+    border-radius: 40px;
+  }
+  35% {
+    transform: scaleY(0.25) rotate(-2deg);
+    opacity: 0.6;
+    filter: blur(3px);
+    border-radius: 30px;
+  }
+  70% {
+    transform: scaleY(1.1) rotate(-1deg);
+    opacity: 1;
+    filter: blur(0px);
+    border-radius: 18px;
+  }
+  100% {
+    transform: scaleY(1) rotate(0deg);
+    opacity: 1;
+    filter: blur(0px);
+    border-radius: 12px;
+  }
+}
+
+.animate-scrollRollOpen {
+  animation: scrollRollOpen 1s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+
 
