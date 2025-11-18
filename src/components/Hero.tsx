@@ -101,28 +101,37 @@ const Hero = () => {
       {/* HERO CONTENT */}
       <div className="text-center relative z-10">
 
-        <h1
-          className="
-            handwritten text-6xl md:text-8xl text-vintage-brown mb-4
-            animate-nameDrop3D
-          "
-          style={{ transform: "rotate(-1deg)" }}
-        >
-          Nukala Vishal
-        </h1>
-        <p
-  className="
-    handwritten 
-    text-3xl md:text-4xl 
-    text-vintage-brown 
-    opacity-85 
-    mt-2 mb-4 
-    tracking-wide 
-    -rotate-1
-  "
->
-  Full-Stack Artisan of the Web
-</p>
+        <div className="flex flex-col items-center justify-center mb-6">
+  <h1
+    className="
+      handwritten 
+      text-6xl md:text-8xl 
+      text-vintage-brown 
+      mb-2 
+      animate-nameDrop3D
+    "
+    style={{ transform: "rotate(-1deg)" }}
+  >
+    Nukala Vishal
+  </h1>
+
+  <p
+    className="
+      handwritten 
+      text-3xl md:text-4xl 
+      text-vintage-brown 
+      opacity-85 
+      -mt-2 
+      tracking-wide 
+      -rotate-1
+      animate-fadeSlideSoft
+    "
+    style={{ animationDelay: "0.2s" }}
+  >
+    Full-Stack Artisan of the Web
+  </p>
+</div>
+
 
         
         <div
