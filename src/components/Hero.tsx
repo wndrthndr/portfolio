@@ -110,7 +110,8 @@ const Hero = () => {
         >
           Nukala Vishal
         </h1>
-
+        <p className="handwritten text-3xl">Software/Web Developer</p>
+        
         <div
           className="
             handwritten text-2xl text-vintage-blue mb-6 opacity-0
