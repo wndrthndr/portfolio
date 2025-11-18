@@ -103,7 +103,7 @@ const Hero = () => {
 
         <h1
           className="
-            handwritten text-6xl md:text-8xl text-vintage-brown mb-6
+            handwritten text-6xl md:text-8xl text-vintage-brown mb-4
             animate-nameDrop3D
           "
           style={{ transform: "rotate(-1deg)" }}
