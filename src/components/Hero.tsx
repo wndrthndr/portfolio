@@ -145,22 +145,22 @@ const Hero = () => {
         </div>
 
         <div
-  className="
-    text-vintage-brown 
-    text-lg 
-    max-w-2xl 
-    mx-auto 
-    leading-relaxed 
-    bg-vintage-cream 
-    p-6 
-    shadow-vintage 
-    opacity-0
-    animate-scrollRollOpen
-  "
-  style={{ animationDelay: "0.6s" }}
->
-  “Ideas are easy. Implementation is hard.” — Guy Kawasaki
-</div>
+          className="
+            text-vintage-brown 
+            text-lg 
+            max-w-2xl 
+            mx-auto 
+            leading-relaxed 
+            bg-vintage-cream 
+            p-6 
+            shadow-vintage 
+            opacity-0
+            animate-scrollRollOpen
+          "
+          style={{ animationDelay: "0.6s" }}
+        >
+          “Ideas are easy. Implementation is hard.” — Guy Kawasaki
+        </div>
 
 
         <a
