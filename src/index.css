@@ -224,6 +224,15 @@
 html {
   scroll-behavior: smooth;
 }
+.sphere-wrap {
+  transform-origin: center center;
+  mask-image: radial-gradient(circle at center,
+    rgba(0,0,0,1) 60%,
+    rgba(0,0,0,0.5) 85%,
+    rgba(0,0,0,0) 100%
+  );
+}
+
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
