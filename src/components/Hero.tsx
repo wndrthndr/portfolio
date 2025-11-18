@@ -118,7 +118,7 @@ const Hero = () => {
   <p
     className="
       handwritten 
-      text-3xl md:text-4xl 
+      text-3xl md:text-3xl 
       text-vintage-brown 
       opacity-85 
       -mt-2 
@@ -128,7 +128,7 @@ const Hero = () => {
     "
     style={{ animationDelay: "0.2s" }}
   >
-    Full-Stack Artisan of the Web
+    Software/Web Developer
   </p>
 </div>
 
