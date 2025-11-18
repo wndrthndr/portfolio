@@ -90,7 +90,7 @@ const Hero = () => {
 
   return (
     <section
-      id="Hero"
+      id="ME"
       className="min-h-screen flex items-center justify-center relative px-4 overflow-hidden bg-worn-paper"
     >
       <canvas
