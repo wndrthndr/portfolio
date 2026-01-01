@@ -50,20 +50,26 @@ const More = () => {
       title: "LeetCode",
       content:
         "Solved 300+ problems covering data structures, algorithms, and common interview patterns.",
-      link: "https://leetcode.com/yourusername",
+      link: "https://leetcode.com/u/vishal_nukala/",
       highlight: true,
     },
     {
-      title: "GeeksforGeeks",
-      content:
-        "Practiced core DSA concepts and competitive programming fundamentals.",
-      link: "https://auth.geeksforgeeks.org/user/yourusername",
-      highlight: true,
-    },
+  title: "GitHub",
+  content:
+    "Open-source contributions, side projects, experiments, and production-ready repositories.",
+  link: "https://github.com/wndrthndr",
+  highlight: true,
+},
+      
     {
       title: "AI Automation",
       content:
         "Built Telegram bots and automation workflows to deliver daily updates.",
+    },
+    {
+     
+      content:
+        "Still Learning...",
     },
   ];
 
