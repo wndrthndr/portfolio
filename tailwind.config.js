@@ -3,6 +3,11 @@ export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      fontFamily: {
+        signature: ['"Eagle Lake"', 'cursive'], // Nukala Vishal
+        tech: ['Iceland', 'sans-serif'],        // Software / Web Developer
+        body: ['Sora', 'sans-serif'],            // Everything else
+      },
       keyframes: {
         // === Hero Blobs ===
         floatBlob: {
