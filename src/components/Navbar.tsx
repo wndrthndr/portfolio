@@ -13,7 +13,7 @@ const Navbar = () => {
 
     const handleMouseMove = (e) => {
       // If cursor is near left edge → show navbar
-      if (e.clientX < 80) {
+      if (e.clientX < 480) {
         setVisible(true);
       } else if (e.clientX > 160) {
         setVisible(false);
