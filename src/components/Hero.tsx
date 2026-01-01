@@ -102,18 +102,9 @@ const Hero = () => {
       <div className="text-center relative z-10">
 
         <div className="flex flex-col items-center justify-center mb-6">
-  <h1
-    className="
-      handwritten 
-      text-6xl md:text-8xl 
-      text-vintage-brown 
-      mb-2 
-      animate-nameDrop3D
-    "
-    style={{ transform: "rotate(-1deg)" }}
-  >
-    Nukala Vishal
-  </h1>
+ <h1 className="font-signature text-5xl md:text-7xl text-[#6b3f2b] tracking-wide mb-4">
+        Nukala Vishal
+      </h1>
 
   <p
     className="
