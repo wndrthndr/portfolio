@@ -43,16 +43,15 @@ const More = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const rail = railRef.current;
-      if (!rail) return;
+      if (!railRef.current) return;
 
-      gsap.to(rail, {
+      gsap.to(railRef.current, {
         xPercent: -60,
         ease: "none",
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
-          end: "bottom+=400 top",
+          end: "bottom top",
           scrub: true,
           pin: true,
         },
@@ -66,50 +65,50 @@ const More = () => {
     <section
       id="More"
       ref={sectionRef}
-      className="relative h-[140vh] bg-white overflow-hidden"
+      className="relative min-h-screen bg-white overflow-hidden"
     >
-      {/* Title */}
-      <div className="sticky top-20 z-10 mb-20">
-        <h2 className="handwritten text-4xl text-vintage-brown text-center -rotate-1">
+      <div className="container mx-auto px-4 pt-20">
+        {/* Heading */}
+        <h2 className="handwritten text-4xl text-vintage-brown text-center mb-10 -rotate-1">
           More Adventures
         </h2>
-      </div>
 
-      {/* Rail */}
-      <div className="absolute top-1/2 -translate-y-1/2 w-full">
-        <div
-          ref={railRef}
-          className="flex gap-16 px-[20vw] will-change-transform"
-        >
-          {experiences.map((exp, i) => (
-            <div
-              key={i}
-              className="
-                min-w-[320px]
-                bg-vintage-cream
-                p-8
-                shadow-vintage
-                transition-transform duration-500
-                hover:scale-105
-              "
-              style={{
-                transform: `rotate(${i % 2 === 0 ? "-1deg" : "1deg"})`,
-              }}
-            >
-              <h3 className="handwritten text-2xl text-vintage-brown mb-4">
-                {exp.title}
-              </h3>
+        {/* Rail */}
+        <div className="relative overflow-hidden">
+          <div
+            ref={railRef}
+            className="flex gap-12 px-[10vw] will-change-transform"
+          >
+            {experiences.map((exp, i) => (
+              <div
+                key={i}
+                className="
+                  min-w-[300px]
+                  bg-vintage-cream
+                  p-7
+                  shadow-vintage
+                  transition-transform duration-300
+                  hover:-translate-y-1
+                "
+                style={{
+                  transform: `rotate(${i % 2 === 0 ? "-0.6deg" : "0.6deg"})`,
+                }}
+              >
+                <h3 className="handwritten text-xl text-vintage-brown mb-3">
+                  {exp.title}
+                </h3>
 
-              <p className="uppercase tracking-widest text-xs text-vintage-blue mb-4">
-                {exp.category}
-              </p>
+                <p className="uppercase tracking-widest text-xs text-vintage-blue mb-3">
+                  {exp.category}
+                </p>
 
-              <div className="flex justify-between text-sm text-vintage-brown opacity-80">
-                <span>{exp.duration}</span>
-                <span>{exp.price}</span>
+                <div className="flex justify-between text-sm text-vintage-brown opacity-80">
+                  <span>{exp.duration}</span>
+                  <span>{exp.price}</span>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
