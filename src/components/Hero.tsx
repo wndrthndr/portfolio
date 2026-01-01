@@ -106,7 +106,7 @@ const Hero = () => {
         Nukala Vishal
       </h1>
 
-  <p className="font-tech text-xl md:text-2xl tracking-[0.25em] uppercase text-gray-700 mb-8">
+  <p className="font-tech text-xl md:text-2xl tracking-[0.25em] uppercase text-gray-700 mb-2">
         Software / Web Developer
       </p>
 
