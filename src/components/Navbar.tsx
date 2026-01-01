@@ -5,35 +5,35 @@ const NAV_ITEMS = ["ME", "About", "Skills", "Projects", "More", "Contact"];
 
 const Navbar = () => {
   const [visible, setVisible] = useState(true);
-  const itemsRef = useRef([]);
+  const itemsRef = useRef<HTMLAnchorElement[]>([]);
 
   useEffect(() => {
-    // FIRST LOAD – jerky falling animation
+    // Window-pane stacking animation
     gsap.fromTo(
       itemsRef.current,
       {
-        y: () => gsap.utils.random(-120, -40),
-        rotation: () => gsap.utils.random(-12, 12),
+        y: (i) => -80 - i * 18,     // each starts slightly higher than the next
+        rotation: () => gsap.utils.random(-4, 4),
         opacity: 0,
       },
       {
         y: 0,
         rotation: 0,
         opacity: 1,
-        duration: 1.2,
-        ease: "power4.out",
+        duration: 0.9,
+        ease: "power3.out",
         stagger: {
-          each: 0.12,
+          each: 0.14,
         },
       }
     );
 
-    // Hide navbar after a few seconds
+    // Auto-hide after first impression
     const hideTimer = setTimeout(() => {
       setVisible(false);
-    }, 3500);
+    }, 3200);
 
-    const handleMouseMove = (e) => {
+    const handleMouseMove = (e: MouseEvent) => {
       if (e.clientX < 80) setVisible(true);
       if (e.clientX > 160) setVisible(false);
     };
@@ -60,18 +60,20 @@ const Navbar = () => {
           <a
             key={item}
             href={`#${item}`}
-            ref={(el) => (itemsRef.current[index] = el)}
+            ref={(el) => {
+              if (el) itemsRef.current[index] = el;
+            }}
             className="
               handwritten
-              text-4xl md:text-5xl
+              text-2xl md:text-3xl
               text-vintage-brown
               hover:text-vintage-blue
               transition-transform duration-300
-              hover:scale-110 hover:-rotate-2
+              hover:scale-[1.06] hover:-rotate-1
               select-none
             "
             style={{
-              textShadow: "2px 3px 6px rgba(0,0,0,0.15)",
+              textShadow: "1px 2px 4px rgba(0,0,0,0.14)",
             }}
           >
             {item}
