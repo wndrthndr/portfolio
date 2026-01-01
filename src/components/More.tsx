@@ -1,114 +1,81 @@
-import React, { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import React from "react";
 
 const More = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const railRef = useRef<HTMLDivElement>(null);
-
-  const experiences = [
-    {
-      title: "WebDev Intern",
-      category: "Professional Experience",
-      duration: "6 Months",
-      price: "Ventura",
-    },
-    {
-      title: "SQL Certification",
-      category: "Certification",
-      duration: "Self-paced",
-      price: "Coursera",
-    },
-    {
-      title: "Problem Solving",
-      category: "Competitive Coding",
-      duration: "300+ Problems",
-      price: "LeetCode / GFG",
-    },
-    {
-      title: "AI Automation",
-      category: "Side Project",
-      duration: "Daily Bot",
-      price: "Telegram",
-    },
-    {
-      title: "System Design Practice",
-      category: "Learning",
-      duration: "Ongoing",
-      price: "Self-driven",
-    },
-  ];
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      if (!railRef.current) return;
-
-      gsap.to(railRef.current, {
-        xPercent: -60,
-        ease: "none",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-          pin: true,
-        },
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
-
   return (
-    <section
-      id="More"
-      ref={sectionRef}
-      className="relative min-h-screen bg-white overflow-hidden"
-    >
-      <div className="container mx-auto px-4 pt-20">
-        {/* Heading */}
-        <h2 className="handwritten text-4xl text-vintage-brown text-center mb-10 -rotate-1">
-          More Adventures
-        </h2>
+    <section id="More" className="py-24 bg-white">
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
 
-        {/* Rail */}
-        <div className="relative overflow-hidden">
-          <div
-            ref={railRef}
-            className="flex gap-12 px-[10vw] will-change-transform"
-          >
-            {experiences.map((exp, i) => (
-              <div
-                key={i}
+          {/* LEFT MAIN COLUMN */}
+          <div className="lg:col-span-2 flex flex-col gap-6">
+
+            {/* TOP LARGE BOX */}
+            <div className="bg-vintage-cream sketched-border shadow-vintage p-10">
+              <h2 className="handwritten text-4xl text-vintage-brown mb-6 -rotate-1">
+                More Than Just Projects
+              </h2>
+
+              <p className="typewriter text-vintage-brown text-lg leading-relaxed max-w-xl">
+                Beyond building applications, I actively sharpen my problem-solving skills
+                and contribute to open-source. These platforms reflect consistency,
+                discipline, and curiosity — qualities I bring into real-world engineering.
+              </p>
+            </div>
+
+            {/* BOTTOM TWO BOXES */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+
+              {/* GitHub */}
+              <a
+                href="https://github.com/yourusername"
+                target="_blank"
                 className="
-                  min-w-[300px]
-                  bg-vintage-cream
-                  p-7
-                  shadow-vintage
-                  transition-transform duration-300
-                  hover:-translate-y-1
+                  bg-vintage-cream sketched-border shadow-vintage p-8
+                  hover:-translate-y-1 transition-transform duration-300
                 "
-                style={{
-                  transform: `rotate(${i % 2 === 0 ? "-0.6deg" : "0.6deg"})`,
-                }}
               >
-                <h3 className="handwritten text-xl text-vintage-brown mb-3">
-                  {exp.title}
+                <h3 className="handwritten text-2xl text-vintage-brown mb-4">
+                  GitHub
                 </h3>
 
-                <p className="uppercase tracking-widest text-xs text-vintage-blue mb-3">
-                  {exp.category}
+                <p className="typewriter text-vintage-brown opacity-80 mb-6">
+                  Open-source work, side projects, experiments, and production-ready code.
                 </p>
 
-                <div className="flex justify-between text-sm text-vintage-brown opacity-80">
-                  <span>{exp.duration}</span>
-                  <span>{exp.price}</span>
-                </div>
-              </div>
-            ))}
+                <span className="text-sm uppercase tracking-widest text-vintage-blue">
+                  View Repositories →
+                </span>
+              </a>
+
+              {/* LeetCode */}
+              <a
+                href="https://leetcode.com/yourusername"
+                target="_blank"
+                className="
+                  bg-vintage-cream sketched-border shadow-vintage p-8
+                  hover:-translate-y-1 transition-transform duration-300
+                "
+              >
+                <h3 className="handwritten text-2xl text-vintage-brown mb-4">
+                  LeetCode
+                </h3>
+
+                <p className="typewriter text-vintage-brown opacity-80 mb-6">
+                  300+ problems solved across DSA, algorithms, and system thinking.
+                </p>
+
+                <span className="text-sm uppercase tracking-widest text-vintage-blue">
+                  View Profile →
+                </span>
+              </a>
+
+            </div>
           </div>
+
+          {/* RIGHT TALL BLOCKS (Optional / Future Use) */}
+          <div className="hidden lg:block bg-vintage-cream sketched-border shadow-vintage"></div>
+          <div className="hidden lg:block bg-vintage-cream sketched-border shadow-vintage"></div>
+
         </div>
       </div>
     </section>
