@@ -24,43 +24,36 @@ const Skills = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // ---- Scroll-based centering motion ----
-      cardsRef.current.forEach((card, i) => {
-        if (!card) return;
+      const [left, center, right] = cardsRef.current;
 
-        const offset =
-          i === 0 ? -120 : i === 2 ? 120 : 0; // side cards move inward
+      if (!left || !center || !right) return;
 
-        gsap.fromTo(
-          card,
-          { x: offset },
+      // Initial overlap state
+      gsap.set(left, { x: 80, zIndex: 3 });
+      gsap.set(right, { x: -80, zIndex: 3 });
+      gsap.set(center, { zIndex: 1 });
+
+      // Scroll-driven reveal
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 70%",
+          end: "bottom 50%",
+          scrub: true,
+        },
+      })
+        .to(left, {
+          x: -140,
+          ease: "none",
+        })
+        .to(
+          right,
           {
-            x: 0,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: sectionRef.current,
-              start: "top 75%",
-              end: "bottom 55%",
-              scrub: true,
-            },
-          }
+            x: 140,
+            ease: "none",
+          },
+          "<"
         );
-      });
-
-      // ---- Wind / cloth movement (lower half illusion) ----
-      cardsRef.current.forEach((card) => {
-        if (!card) return;
-
-        gsap.to(card, {
-          rotation: () => gsap.utils.random(-1.5, 1.5),
-          y: () => gsap.utils.random(-4, 4),
-          duration: () => gsap.utils.random(2.5, 4),
-          ease: "sine.inOut",
-          repeat: -1,
-          yoyo: true,
-          delay: gsap.utils.random(1, 3),
-        });
-      });
     }, sectionRef);
 
     return () => ctx.revert();
@@ -70,14 +63,14 @@ const Skills = () => {
     <section
       id="Skills"
       ref={sectionRef}
-      className="py-20 bg-worn-paper overflow-hidden"
+      className="py-24 bg-worn-paper overflow-hidden"
     >
       <div className="container mx-auto px-4">
-        <h2 className="handwritten text-4xl text-vintage-brown text-center mb-16 -rotate-1">
+        <h2 className="handwritten text-4xl text-vintage-brown text-center mb-20 -rotate-1">
           Skills & Passions
         </h2>
 
-        <div className="flex flex-wrap justify-center gap-12">
+        <div className="relative flex justify-center items-center h-[420px]">
           {categories.map((category, i) => (
             <div
               key={i}
@@ -85,12 +78,11 @@ const Skills = () => {
                 if (el) cardsRef.current[i] = el;
               }}
               className="
-                relative w-72 bg-vintage-cream p-6 shadow-vintage
-                transform will-change-transform
+                absolute w-72 bg-vintage-cream p-6 shadow-vintage
+                will-change-transform
               "
               style={{
-                rotate: i % 2 === 0 ? "-2deg" : "2deg",
-                transformOrigin: "center top",
+                rotate: i === 1 ? "0deg" : i === 0 ? "-2deg" : "2deg",
               }}
             >
               {/* Tape */}
