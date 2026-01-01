@@ -34,7 +34,7 @@ const Navbar = () => {
     }, 3200);
 
     const handleMouseMove = (e: MouseEvent) => {
-      if (e.clientX < 580) setVisible(true);
+      if (e.clientX < 880) setVisible(true);
       if (e.clientX > 260) setVisible(false);
     };
 
