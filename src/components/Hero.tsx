@@ -106,21 +106,10 @@ const Hero = () => {
         Nukala Vishal
       </h1>
 
-  <p
-    className="
-      handwritten 
-      text-3xl md:text-3xl 
-      text-vintage-brown 
-      opacity-85 
-      -mt-2 
-      tracking-wide 
-      -rotate-1
-      animate-fadeSlideSoft
-    "
-    style={{ animationDelay: "0.2s" }}
-  >
-    Software/Web Developer
-  </p>
+  <p className="font-tech text-xl md:text-2xl tracking-[0.25em] uppercase text-gray-700 mb-8">
+        Software / Web Developer
+      </p>
+
 </div>
 
 
