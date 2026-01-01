@@ -1,11 +1,8 @@
-import React, { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import React, { useEffect, useRef, useState } from "react";
 
-gsap.registerPlugin(ScrollTrigger);
 const Skills = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const cardsRef = useRef<HTMLDivElement[]>([]);
+  const sectionRef = useRef(null);
+  const [animate, setAnimate] = useState(false);
 
   const categories = [
     {
@@ -22,77 +19,58 @@ const Skills = () => {
     },
   ];
 
+  // Detect when section is in view
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      const [left, center, right] = cardsRef.current;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) setAnimate(true);
+      },
+      { threshold: 0.3 }
+    );
 
-      if (!left || !center || !right) return;
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
 
-      // Initial overlap state
-      gsap.set(left, { x: 80, zIndex: 3 });
-      gsap.set(right, { x: -80, zIndex: 3 });
-      gsap.set(center, { zIndex: 1 });
-
-      // Scroll-driven reveal
-      gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 70%",
-          end: "bottom 50%",
-          scrub: true,
-        },
-      })
-        .to(left, {
-          x: -140,
-          ease: "none",
-        })
-        .to(
-          right,
-          {
-            x: 140,
-            ease: "none",
-          },
-          "<"
-        );
-    }, sectionRef);
-
-    return () => ctx.revert();
+    return () => observer.disconnect();
   }, []);
 
   return (
-    <section
-      id="Skills"
-      ref={sectionRef}
-      className="py-24 bg-worn-paper overflow-hidden"
-    >
+    <section id="Skills" ref={sectionRef} className="py-20 bg-worn-paper">
       <div className="container mx-auto px-4">
-        <h2 className="handwritten text-4xl text-vintage-brown text-center mb-20 -rotate-1">
+        <h2 className="handwritten text-4xl text-vintage-brown text-center mb-16 -rotate-1">
           Skills & Passions
         </h2>
 
-        <div className="relative flex justify-center items-center h-[420px]">
+        {/* Skill Cards */}
+        <div className="flex flex-wrap justify-center gap-12">
           {categories.map((category, i) => (
             <div
               key={i}
-              ref={(el) => {
-                if (el) cardsRef.current[i] = el;
-              }}
-              className="
-                absolute w-72 bg-vintage-cream p-6 shadow-vintage
-                will-change-transform
-              "
+              className={`
+                relative w-72 bg-vintage-cream p-6 shadow-vintage transform 
+                ${animate ? (
+                  i === 1
+                    ? "animate-slideCenter"
+                    : i === 0
+                    ? "animate-slideLeft"
+                    : "animate-slideRight"
+                ) : "opacity-0"}
+              `}
               style={{
-                rotate: i === 1 ? "0deg" : i === 0 ? "-2deg" : "2deg",
+                transform: `rotate(${i % 2 === 0 ? -2 : 2}deg)`,
               }}
             >
-              {/* Tape */}
+              {/* Tape strips */}
               <div className="absolute -top-3 left-6 w-16 h-4 bg-yellow-200 rotate-[-6deg] opacity-80"></div>
               <div className="absolute -top-3 right-6 w-16 h-4 bg-yellow-200 rotate-6 opacity-80"></div>
 
+              {/* Title */}
               <h3 className="handwritten text-2xl text-vintage-blue mb-4">
                 {category.title}
               </h3>
 
+              {/* Skill list */}
               <ul className="space-y-2 typewriter text-vintage-brown text-base">
                 {category.items.map((skill, idx) => (
                   <li key={idx} className="flex items-center gap-2">
