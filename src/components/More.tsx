@@ -1,101 +1,116 @@
-import React from "react";
-
+import React, { useEffect, useRef } from "react";
+import gsap from "gsap";
 const More = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const boxRefs = useRef<HTMLDivElement[]>([]);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+
+    const bounds = containerRef.current.getBoundingClientRect();
+
+    // Animate boxes from center "big box"
+    gsap.fromTo(
+      boxRefs.current,
+      {
+        x: bounds.width / 2 - 150,
+        y: bounds.height / 2 - 100,
+        opacity: 0,
+        scale: 0.9,
+      },
+      {
+        x: 0,
+        y: 0,
+        opacity: 1,
+        scale: 1,
+        duration: 1,
+        ease: "power3.out",
+        stagger: 0.12,
+      }
+    );
+  }, []);
+
+  const panels = [
+    {
+      title: "More Than Just Code",
+      content:
+        "Beyond projects, I continuously invest time in problem solving, certifications, and automation to strengthen fundamentals and system thinking.",
+      span: "lg:col-span-2",
+      big: true,
+    },
+    {
+      title: "WebDev Intern",
+      content: "Building and maintaining websites for Ventura.",
+    },
+    {
+      title: "SQL Certification",
+      content: "SQL for Data Science — Coursera.",
+    },
+    {
+      title: "LeetCode",
+      content: "Solved 300+ problems across DSA and algorithmic patterns.",
+      link: "https://leetcode.com/yourusername",
+      highlight: true,
+    },
+    {
+      title: "GeeksforGeeks",
+      content: "Core DSA practice and competitive programming fundamentals.",
+      link: "https://auth.geeksforgeeks.org/user/yourusername",
+      highlight: true,
+    },
+    {
+      title: "AI Automation",
+      content: "Built Telegram bots and automation workflows.",
+    },
+  ];
+
   return (
     <section id="More" className="py-28 bg-white">
       <div className="container mx-auto px-4">
-
-        {/* PANEL GRID */}
         <div
+          ref={containerRef}
           className="
-            grid
-            grid-cols-1
-            lg:grid-cols-4
-            auto-rows-fr
-            gap-6
-            max-w-7xl mx-auto
+            grid grid-cols-1 lg:grid-cols-4
+            gap-6 max-w-7xl mx-auto
           "
         >
-          {/* TOP WIDE PANEL */}
-          <div className="lg:col-span-2 border border-vintage-brown/40 p-10">
-            <h2 className="handwritten text-4xl text-vintage-brown mb-4">
-              More Than Just Code
-            </h2>
-            <p className="typewriter text-vintage-brown text-lg leading-relaxed max-w-xl">
-              Beyond projects, I continuously invest time in problem solving,
-              certifications, and automation. These experiences strengthen my
-              fundamentals and shape how I design real-world systems.
-            </p>
-          </div>
+          {panels.map((panel, i) => {
+            const Wrapper = panel.link ? "a" : "div";
 
-          {/* RIGHT PANEL 1 */}
-          <div className="border border-vintage-brown/40 p-8">
-            <h3 className="handwritten text-2xl text-vintage-brown mb-3">
-              WebDev Intern
-            </h3>
-            <p className="typewriter text-vintage-brown opacity-80">
-              Building and maintaining websites for Ventura.
-            </p>
-          </div>
+            return (
+              <Wrapper
+                key={i}
+                href={panel.link}
+                target={panel.link ? "_blank" : undefined}
+                ref={(el: HTMLDivElement) => {
+                  if (el) boxRefs.current[i] = el;
+                }}
+                className={`
+                  ${panel.span ?? ""}
+                  border-2 border-dotted border-[#7a4a2e]
+                  p-${panel.big ? "10" : "8"}
+                  transition-all duration-300
+                  hover:bg-[#f6d6dd]
+                  focus:bg-[#f6d6dd]
+                `}
+              >
+                <h3
+                  className={`
+                    handwritten
+                    ${panel.big ? "text-4xl" : "text-2xl"}
+                    text-vintage-brown
+                    mb-4
+                  `}
+                >
+                  {panel.title}
+                </h3>
 
-          {/* RIGHT PANEL 2 */}
-          <div className="border border-vintage-brown/40 p-8">
-            <h3 className="handwritten text-xl text-vintage-brown mb-3">
-              SQL Certification
-            </h3>
-            <p className="typewriter text-vintage-brown opacity-80">
-              SQL for Data Science — Coursera.
-            </p>
-          </div>
-
-          {/* BOTTOM LEFT — LEETCODE */}
-          <a
-            href="https://leetcode.com/yourusername"
-            target="_blank"
-            className="
-              border border-vintage-brown/60
-              p-10
-              hover:bg-vintage-brown/5
-              transition-colors
-            "
-          >
-            <h3 className="handwritten text-2xl text-vintage-brown mb-4">
-              LeetCode
-            </h3>
-            <p className="typewriter text-vintage-brown opacity-80">
-              Solved 300+ problems across DSA and algorithmic patterns.
-            </p>
-          </a>
-
-          {/* BOTTOM CENTER — GEEKSFORGEEKS */}
-          <a
-            href="https://auth.geeksforgeeks.org/user/yourusername"
-            target="_blank"
-            className="
-              border border-vintage-brown/60
-              p-10
-              hover:bg-vintage-brown/5
-              transition-colors
-            "
-          >
-            <h3 className="handwritten text-2xl text-vintage-brown mb-4">
-              GeeksforGeeks
-            </h3>
-            <p className="typewriter text-vintage-brown opacity-80">
-              Core DSA practice and competitive programming fundamentals.
-            </p>
-          </a>
-
-          {/* OPTIONAL / FUTURE PANEL */}
-          <div className="border border-vintage-brown/40 p-8">
-            <h3 className="handwritten text-xl text-vintage-brown mb-3">
-              AI Automation
-            </h3>
-            <p className="typewriter text-vintage-brown opacity-80">
-              Built Telegram bots and automation workflows.
-            </p>
-          </div>
-
+                <p className="typewriter text-vintage-brown opacity-80 leading-relaxed">
+                  {panel.content}
+                </p>
+              </Wrapper>
+            );
+          })}
         </div>
       </div>
     </section>
