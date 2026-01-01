@@ -1,14 +1,13 @@
 import React, { useEffect } from "react";
 
 const Hero = () => {
-
   useEffect(() => {
     const canvas = document.getElementById("dustCanvas");
     const ctx = canvas.getContext("2d");
 
     let w, h;
     const particles = [];
-    const NUM = 140;  // more particles → more intensity
+    const NUM = 140;
     let mouse = { x: 0, y: 0 };
 
     const resize = () => {
@@ -19,7 +18,6 @@ const Hero = () => {
     window.addEventListener("resize", resize);
     resize();
 
-    // create particles
     for (let i = 0; i < NUM; i++) {
       particles.push({
         x: Math.random() * w,
@@ -44,41 +42,31 @@ const Hero = () => {
         let dy = p.y - mouse.y;
         let dist = Math.sqrt(dx * dx + dy * dy);
 
-        // 🌀 INTENSE SWIRL
         if (dist < 260) {
           let force = (260 - dist) / 260;
           let angle = Math.atan2(dy, dx);
-
-          // stronger orbit speed
           p.vx += Math.cos(angle + Math.PI / 2) * force * 0.35;
           p.vy += Math.sin(angle + Math.PI / 2) * force * 0.35;
         }
 
-        // ✨ STRONG GLOW
         p.glow = dist < 180 ? 0.55 : 0.15;
 
-        // Faster motion
         p.x += p.vx;
         p.y += p.vy;
-
-        // motion decay
         p.vx *= 0.96;
         p.vy *= 0.96;
 
-        // wrap around edges
         if (p.x < 0) p.x = w;
         if (p.x > w) p.x = 0;
         if (p.y < 0) p.y = h;
         if (p.y > h) p.y = 0;
 
-        // draw particle
         ctx.beginPath();
-        ctx.fillStyle = `rgba(140, 100, 60, ${p.glow})`; // deep warm ink
+        ctx.fillStyle = `rgba(140, 100, 60, ${p.glow})`;
         ctx.shadowBlur = p.glow * 45;
         ctx.shadowColor = "rgba(255, 180, 120, 0.9)";
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
         ctx.fill();
-
         ctx.shadowBlur = 0;
       });
 
@@ -93,80 +81,89 @@ const Hero = () => {
       id="ME"
       className="min-h-screen flex items-center justify-center relative px-4 overflow-hidden bg-worn-paper"
     >
+      {/* Dust Canvas */}
       <canvas
         id="dustCanvas"
         className="absolute inset-0 z-0 pointer-events-none"
-      ></canvas>
+      />
 
       {/* HERO CONTENT */}
-      <div className="text-center relative z-10">
+      <div className="relative z-10 text-center">
 
+        {/* NAME — falling effect retained */}
         <h1
-  ref={nameRef}
-  className="
-    font-signature
-    text-5xl md:text-7xl
-    text-[#6b3f2b]
-    tracking-[0.06em]
-    mb-4
-    origin-top
-  "
->
-  Nukala Vishal
-</h1>
-
-
-  <p className="font-tech text-xl md:text-2xl tracking-[0.25em] uppercase text-gray-700 mb-2">
-        Software / Web Developer
-      </p>
-
-</div>
-
-
-        
-        <div
           className="
-            handwritten text-2xl text-vintage-blue mb-6 opacity-0
+            font-signature
+            text-5xl md:text-7xl
+            text-[#6b3f2b]
+            tracking-[0.06em]
+            mb-4
+            origin-top
+            opacity-0
+            animate-nameDrop3D
+          "
+        >
+          Nukala Vishal
+        </h1>
+
+        {/* ROLE */}
+        <p
+          className="
+            font-tech
+            text-xl md:text-2xl
+            tracking-[0.25em]
+            uppercase
+            text-gray-700
+            mb-6
+            opacity-0
             animate-fadeSlideSoft
           "
-          style={{ animationDelay: "0.4s" }}
+          style={{ animationDelay: "0.25s" }}
+        >
+          Software / Web Developer
+        </p>
+
+        {/* TAGLINE */}
+        <div
+          className="
+            handwritten text-2xl text-vintage-blue mb-6
+            opacity-0 animate-fadeSlideSoft
+          "
+          style={{ animationDelay: "0.45s" }}
         >
           Building Experiences, One Pixel at a Time
         </div>
 
+        {/* QUOTE */}
         <div
           className="
-            text-vintage-brown 
-            text-lg 
-            max-w-2xl 
-            mx-auto 
-            leading-relaxed 
-            bg-vintage-cream 
-            p-6 
-            shadow-vintage 
-            opacity-0
-            animate-scrollRollOpen
+            text-vintage-brown text-lg max-w-2xl mx-auto
+            leading-relaxed bg-vintage-cream p-6 shadow-vintage
+            opacity-0 animate-fadeSlideSoft
           "
-          style={{ animationDelay: "0.6s" }}
+          style={{ animationDelay: "0.65s" }}
         >
           “Ideas are easy. Implementation is hard.” — Guy Kawasaki
         </div>
 
-
+        {/* RESUME CTA */}
         <a
           href="/resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
           className="
-            inline-block px-6 py-3 mt-4 bg-vintage-brown text-vintage-cream 
-            font-handwritten rounded shadow-vintage border-2 border-dashed 
-            hover:bg-vintage-blue hover:text-vintage-cream transition-colors 
-            duration-300 opacity-0 animate-fadeSlideSoft
+            inline-block px-6 py-3 mt-6
+            bg-vintage-brown text-vintage-cream
+            font-handwritten rounded shadow-vintage
+            border-2 border-dashed
+            hover:bg-vintage-blue transition-colors
+            opacity-0 animate-fadeSlideSoft
           "
-          style={{ animationDelay: "0.8s" }}
+          style={{ animationDelay: "0.85s" }}
         >
           View Resume
         </a>
+
       </div>
     </section>
   );
