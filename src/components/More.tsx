@@ -1,21 +1,6 @@
 import React from "react";
 
 const More = () => {
-  const scraps = [
-    {
-      title: "WebDev Intern",
-      description: "Building and maintaining websites for Ventura",
-    },
-    {
-      title: "SQL Certification",
-      description: "Completed SQL for Data Science on Coursera.",
-    },
-    {
-      title: "AI Automation",
-      description: "Built a Telegram bot that delivers daily updates",
-    },
-  ];
-
   return (
     <section id="More" className="py-28 bg-white">
       <div className="container mx-auto px-4">
@@ -23,105 +8,102 @@ const More = () => {
         {/* OUTER FRAME */}
         <div
           className="
-            max-w-6xl mx-auto
+            max-w-7xl mx-auto
             bg-vintage-cream
             sketched-border
             shadow-vintage
-            p-10 md:p-14
+            p-6 md:p-8
           "
-          style={{ transform: "rotate(-0.4deg)" }}
         >
-          {/* GRID INSIDE FRAME */}
-          <div className="grid grid-cols-4 grid-rows-4 gap-6">
-
-            {/* BIG CONTEXT BLOCK */}
-            <div className="col-span-4 row-span-1">
+          {/* GRID */}
+          <div
+            className="
+              grid
+              grid-cols-1
+              lg:grid-cols-4
+              grid-rows-[auto_auto]
+              gap-6
+            "
+          >
+            {/* TOP WIDE BLOCK */}
+            <div className="lg:col-span-2 border border-vintage-brown/30 p-8">
               <h2 className="handwritten text-4xl text-vintage-brown mb-4">
                 More Than Just Code
               </h2>
-              <p className="typewriter text-vintage-brown text-lg leading-relaxed max-w-3xl">
-                Beyond projects, I invest time in strengthening fundamentals,
-                automation, and problem solving. These experiences shape how I
-                approach engineering, design systems, and write scalable code.
+              <p className="typewriter text-vintage-brown text-lg leading-relaxed">
+                Beyond projects, I continuously invest time in problem solving,
+                certifications, and automation. These experiences strengthen my
+                fundamentals and shape how I design real-world systems.
               </p>
             </div>
 
-            {/* WEBDEV INTERN */}
-            <div className="col-span-2 row-span-1 border border-vintage-brown/30 p-6">
+            {/* RIGHT BLOCK A */}
+            <div className="border border-vintage-brown/30 p-6">
               <h3 className="handwritten text-2xl text-vintage-brown mb-3">
-                {scraps[0].title}
+                WebDev Intern
               </h3>
               <p className="typewriter text-vintage-brown opacity-80">
-                {scraps[0].description}
+                Building and maintaining websites for Ventura.
               </p>
             </div>
 
-            {/* SQL CERT */}
-            <div className="col-span-2 row-span-1 border border-vintage-brown/30 p-6">
+            {/* RIGHT BLOCK B */}
+            <div className="border border-vintage-brown/30 p-6">
               <h3 className="handwritten text-xl text-vintage-brown mb-3">
-                {scraps[1].title}
+                SQL Certification
               </h3>
               <p className="typewriter text-vintage-brown opacity-80">
-                {scraps[1].description}
+                SQL for Data Science — Coursera.
               </p>
             </div>
 
-            {/* AI AUTOMATION */}
-            <div className="col-span-1 row-span-1 border border-vintage-brown/30 p-6">
-              <h3 className="handwritten text-xl text-vintage-brown mb-3">
-                {scraps[2].title}
-              </h3>
-              <p className="typewriter text-vintage-brown opacity-80">
-                {scraps[2].description}
-              </p>
-            </div>
-
-            {/* LEETCODE (ANCHOR) */}
+            {/* LEETCODE (BOTTOM LEFT) */}
             <a
               href="https://leetcode.com/yourusername"
               target="_blank"
               className="
-                col-span-2 row-span-1
                 border border-vintage-brown/50
-                p-7
+                p-8
                 hover:bg-vintage-brown/5
                 transition-colors
               "
             >
-              <h3 className="handwritten text-2xl text-vintage-brown mb-3">
+              <h3 className="handwritten text-2xl text-vintage-brown mb-4">
                 LeetCode
               </h3>
-              <p className="typewriter text-vintage-brown opacity-80 mb-4">
-                Solved 300+ problems across DSA, algorithms, and interview
-                patterns.
+              <p className="typewriter text-vintage-brown opacity-80">
+                Solved 300+ problems across DSA and algorithmic patterns.
               </p>
-              <span className="text-sm uppercase tracking-widest text-vintage-blue">
-                View Profile →
-              </span>
             </a>
 
-            {/* GEEKSFORGEEKS (ANCHOR) */}
+            {/* GEEKSFORGEEKS (BOTTOM CENTER) */}
             <a
               href="https://auth.geeksforgeeks.org/user/yourusername"
               target="_blank"
               className="
-                col-span-1 row-span-1
                 border border-vintage-brown/50
-                p-7
+                p-8
                 hover:bg-vintage-brown/5
                 transition-colors
               "
             >
-              <h3 className="handwritten text-xl text-vintage-brown mb-3">
+              <h3 className="handwritten text-2xl text-vintage-brown mb-4">
                 GeeksforGeeks
               </h3>
-              <p className="typewriter text-vintage-brown opacity-80 mb-4">
-                Core DSA and competitive programming practice.
+              <p className="typewriter text-vintage-brown opacity-80">
+                Core DSA practice and competitive programming fundamentals.
               </p>
-              <span className="text-sm uppercase tracking-widest text-vintage-blue">
-                View →
-              </span>
             </a>
+
+            {/* RIGHT BLOCK C (OPTIONAL / FUTURE) */}
+            <div className="border border-vintage-brown/30 p-6">
+              <h3 className="handwritten text-xl text-vintage-brown mb-3">
+                AI Automation
+              </h3>
+              <p className="typewriter text-vintage-brown opacity-80">
+                Built Telegram bots and automation workflows.
+              </p>
+            </div>
 
           </div>
         </div>
