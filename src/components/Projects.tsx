@@ -9,10 +9,10 @@ const projects = [
     link: "https://c-vision-3tpe.vercel.app/",
   },
   {
-    title: "AI Code Reviewer",
-    desc: "AI-driven platform that detects code issues and guides developers toward best practices",
-    tech: ["React", "Node.js", "OpenAI API"],
-    link: "#",
+    title: "Colour Contrast Checker",
+    desc: "Accessibility-focused tool that checks color contrast ratios for text, hover states, and gradients based on WCAG guidelines.",
+    tech: ["React", "CSS", "Accessibility", "WCAG"],
+    link: "https://github.com/wndrthndr/Colour-Contrast",
   },
   {
     title: "Amazon Product Analyser",
