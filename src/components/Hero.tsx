@@ -101,10 +101,20 @@ const Hero = () => {
       {/* HERO CONTENT */}
       <div className="text-center relative z-10">
 
-        <div className="flex flex-col items-center justify-center mb-6">
- <h1 className="font-signature text-5xl md:text-7xl text-[#6b3f2b] tracking-wide mb-4">
-        Nukala Vishal
-      </h1>
+        <h1
+  ref={nameRef}
+  className="
+    font-signature
+    text-5xl md:text-7xl
+    text-[#6b3f2b]
+    tracking-[0.06em]
+    mb-4
+    origin-top
+  "
+>
+  Nukala Vishal
+</h1>
+
 
   <p className="font-tech text-xl md:text-2xl tracking-[0.25em] uppercase text-gray-700 mb-2">
         Software / Web Developer
